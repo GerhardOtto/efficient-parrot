@@ -77,12 +77,21 @@ const Header = () => {
               >
                 About
               </Link>
+
               <Link
-                href="/contact"
+                href="/blog"
                 className="text-lg"
                 onClick={() => setIsOpen(false)}
               >
-                Contact
+                Blog
+              </Link>
+
+              <Link
+                href="/History"
+                className="text-lg"
+                onClick={() => setIsOpen(false)}
+              >
+                History
               </Link>
               <Switch />
             </nav>
