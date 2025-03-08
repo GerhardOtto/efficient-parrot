@@ -25,7 +25,9 @@ import { createAvatar } from "@dicebear/core";
 import { ThemeSwitch } from "./ThemeSwitch";
 
 const avatar = createAvatar(notionists, {
-  seed: "Food",
+  seed:"01101001 00100000 01110011 01110000 01100101 01101110 01110100 00100000 01110100 01101111 01101111 00100000 01101101 01110101 01100011 01101000 00100000 01110100 01101001 01101101 01100101 00100000 01101111 01101110 00100000 01110100 01101000 01101001 01110011",
+  glasses: ["variant03"],
+  glassesProbability: 100,
 });
 
 const svg = avatar.toDataUri();
