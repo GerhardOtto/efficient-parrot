@@ -3,7 +3,6 @@ import { Recipe } from "@/types/recipe";
 import path from "path";
 import fs from "fs/promises";
 import matter from "gray-matter";
-import Markdown from "markdown-to-jsx";
 import Link from "next/link";
 
 const recipesDir = path.join(process.cwd(), "data", "recipes");
@@ -26,7 +25,7 @@ async function getRecipes(): Promise<Recipe[]> {
           const { data, content } = matter(fileContent);
 
           return {
-            slug: file.replace(".md", ""), // e.g., "gochujang-chicken"
+            slug: file.replace(".md", ""),
             title: data.title as string,
             category: data.category as "drinks" | "desserts" | "meals",
             prepTime: data.prepTime as string | undefined,
@@ -75,7 +74,7 @@ export default async function Page({
   const topRecipes = categoryRecipes.slice(0, 3);
 
   return (
-    <div>
+    <div className="mx-10 pt-6">
       <h1>{categoryData.title}</h1>
       <p>{categoryData.description}</p>
       <h2>Top Recipes</h2>
