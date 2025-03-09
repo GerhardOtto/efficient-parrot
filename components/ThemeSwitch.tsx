@@ -3,6 +3,7 @@
 import { useTheme } from "next-themes";
 import { Switch } from "@/components/ui/switch";
 import { useEffect, useState } from "react";
+import { Circle } from "lucide-react";
 
 export function ThemeSwitch() {
   const { resolvedTheme, setTheme } = useTheme();
@@ -25,6 +26,7 @@ export function ThemeSwitch() {
       checked={isLight}
       onCheckedChange={handleThemeChange}
       aria-label="Toggle theme"
+      thumb={<Circle className="h-4 w-4" />}
     />
   );
 }
