@@ -6,9 +6,9 @@ import {
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 import { AvatarImage } from "@radix-ui/react-avatar";
-import { Circle, Menu } from "lucide-react";
+import { Menu } from "lucide-react";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Avatar, AvatarFallback } from "./ui/avatar";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
@@ -22,38 +22,12 @@ import {
 
 import { notionists } from "@dicebear/collection";
 import { createAvatar } from "@dicebear/core";
-import { useTheme } from "next-themes";
-import { Switch } from "./ui/switch";
 
 const avatar = createAvatar(notionists, {
-  seed:"01101001 00100000 01110011 01110000 01100101 01101110 01110100 00100000 01110100 01101111 01101111 00100000 01101101 01110101 01100011 01101000 00100000 01110100 01101001 01101101 01100101 00100000 01101111 01101110 00100000 01110100 01101000 01101001 01110011",
+  seed: "01101001 00100000 01110011 01110000 01100101 01101110 01110100 00100000 01110100 01101111 01101111 00100000 01101101 01110101 01100011 01101000 00100000 01110100 01101001 01101101 01100101 00100000 01101111 01101110 00100000 01110100 01101000 01101001 01110011",
   glasses: ["variant03"],
   glassesProbability: 100,
 });
-
-const ThemeSwitch = () => {
-  const { resolvedTheme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const isLight = mounted ? resolvedTheme === "light" : false;
-
-  const handleThemeChange = (checked: boolean) => {
-    setTheme(checked ? "light" : "dark");
-  };
-
-  return (
-    <Switch
-      checked={isLight}
-      onCheckedChange={handleThemeChange}
-      aria-label="Toggle theme"
-      thumb={<Circle className="h-4 w-4" />}
-    />
-  );
-}
 
 const svg = avatar.toDataUri();
 
@@ -81,9 +55,7 @@ export const Header = () => {
           </SheetTrigger>
           <SheetContent side="right">
             <SheetHeader>
-              <SheetTitle>
-                  Gerhard Otto
-              </SheetTitle>
+              <SheetTitle>Gerhard Otto</SheetTitle>
             </SheetHeader>
             <nav className="flex flex-col items-center space-y-4 mt-8">
               {navItems.map((item) => (
@@ -93,7 +65,6 @@ export const Header = () => {
                   </Button>
                 </Link>
               ))}
-              <ThemeSwitch />
             </nav>
           </SheetContent>
         </Sheet>
@@ -139,9 +110,7 @@ export const Header = () => {
                   </Link>
                 ))}
               </NavigationMenuItem>
-              <NavigationMenuItem>
-                <ThemeSwitch />
-              </NavigationMenuItem>
+              <NavigationMenuItem></NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
         </div>
